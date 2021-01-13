@@ -1,13 +1,26 @@
-# NAMING CONVENTIONS
-* `name` property in package.json should be changed to a module name
-* `description` property in package.json should describe plugin feature
+# Customer delete plugin
+Plugin provides support for customer account delete action.
 
-## Write plugin
-Entry point for plugin should be `index.ts` file. LSF plugin is a default void function 
-that accepts initialized Libstorefront instance.
+## Usage
+To use the plugin add dependency to the LSF lib:
+```javascript
+const LSF = new LibStorefront({
+    plugins: [
+        CustomerDeletePlugin
+    ]
+});
+```
 
-Plugin has access to all lsf functionality including IOC container. Dependencies
-can be rebound according to plugin needs.
+and get `CustomerDeleteService` registered by lib:
+```javascript
+LSF.get(CustomerDeleteService)
+```
+
+## Service 
+Plugin registers service `CustomerDeleteService` which serves as a plugin entry point.
+Service methods:
+* `deleteCustomer (): Promise<void>` - requests a customer delete. This action does not implies that account will be deleted or blocked - delete request must be confirmed 
+* `confirmDelete (customerId: string, deleteToken: string): Promise<void>` - confirms account delete. After delete user will be logged out if authorized and session will be cleared
 
 ## Build plugin
 Run `npm run build` to build plugin.
