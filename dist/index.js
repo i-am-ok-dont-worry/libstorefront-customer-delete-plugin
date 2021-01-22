@@ -158,7 +158,7 @@ var CustomerDeleteDao = /** @class */ (function () {
     };
     CustomerDeleteDao.prototype.confirmDelete = function (customerId, deleteToken) {
         return this.taskQueue.execute({
-            url: libstorefront_1.URLTransform.getAbsoluteApiUrl('/api/vendor/customer-delete/confirm' + customerId + '?token=' + deleteToken),
+            url: libstorefront_1.URLTransform.getAbsoluteApiUrl('/api/vendor/customer-delete/confirm/' + customerId + '?token=' + deleteToken),
             payload: {
                 method: 'POST',
                 mode: 'cors',

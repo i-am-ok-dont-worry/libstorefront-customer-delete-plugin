@@ -17,7 +17,7 @@ export class CustomerDeleteDao {
 
     public confirmDelete (customerId: string, deleteToken: string): Promise<Task> {
         return this.taskQueue.execute({
-            url: URLTransform.getAbsoluteApiUrl('/api/vendor/customer-delete/confirm' + customerId + '?token=' + deleteToken),
+            url: URLTransform.getAbsoluteApiUrl('/api/vendor/customer-delete/confirm/' + customerId + '?token=' + deleteToken),
             payload: {
                 method: 'POST',
                 mode: 'cors',
