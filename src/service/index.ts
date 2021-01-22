@@ -40,7 +40,7 @@ export class CustomerDeleteService {
             return this.customerDeleteDao.confirmDelete(customerId, deleteToken)
                 .then(response => {
                     if (response.result) {
-                        this.userService.logout();
+                        this.userService.logout(true);
                         return;
                     }
                     else { throw new Error('Error during delete'); }

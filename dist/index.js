@@ -281,7 +281,7 @@ var CustomerDeleteService = /** @class */ (function () {
             return this.customerDeleteDao.confirmDelete(customerId, deleteToken)
                 .then(function (response) {
                 if (response.result) {
-                    _this.userService.logout();
+                    _this.userService.logout(true);
                     return;
                 }
                 else {
